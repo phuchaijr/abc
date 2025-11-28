@@ -3,10 +3,185 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Metro System Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <h1>Hello</h1>
-    <h2>hahaha</h2>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-train-subway"></i>
+          <span>Metro System</span>
+        </div>
+
+        <ul class="menu">
+          <li>
+            <a href="#" class="active" onclick="showPage('lines')">
+              <i class="fa-solid fa-grip"></i> Line Management
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showPage('stations')">
+              <i class="fa-solid fa-building"></i> Station Management
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showPage('routes')">
+              <i class="fa-solid fa-map-location-dot"></i> Route Management
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showPage('timetable')">
+              <i class="fa-regular fa-calendar-days"></i> Timetable
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showPage('tickets')">
+              <i class="fa-solid fa-ticket"></i> Ticket Management
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showPage('staff')">
+              <i class="fa-solid fa-user-tie"></i> Staff Management
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showPage('reports')">
+              <i class="fa-solid fa-chart-pie"></i> Reports
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <header>
+          <div class="menu-toggle" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search page or data..."
+              onkeyup="searchFunction()"
+            />
+          </div>
+
+          <div class="user-profile">
+            <i class="fa-regular fa-bell"></i>
+            <div class="avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff"
+                alt="User"
+              />
+            </div>
+          </div>
+        </header>
+
+        <div id="content-area">
+          <section id="lines-page" class="page-section">
+            <div class="page-header">
+              <h2>Line Management</h2>
+              <div class="actions">
+                <button class="btn btn-add">
+                  <i class="fa-solid fa-plus"></i> Add
+                </button>
+                <button class="btn btn-white">
+                  <i class="fa-solid fa-pen"></i> Edit
+                </button>
+                <button class="btn btn-white">
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+                <button class="btn btn-white">Refresh</button>
+              </div>
+            </div>
+
+            <div class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Line Code</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Total Stations</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="line-table-body"></tbody>
+              </table>
+            </div>
+
+            <div class="details-grid">
+              <div class="card form-card">
+                <h3>Line Details</h3>
+                <div class="form-group">
+                  <label>Line Code</label>
+                  <input type="text" value="EW" readonly />
+                </div>
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" value="East West Line" />
+                </div>
+                <div class="form-group">
+                  <label>Status</label>
+                  <select>
+                    <option>Operating</option>
+                    <option>Closed</option>
+                    <option>Maintenance</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="card list-card">
+                <h3>Ordered Stations</h3>
+                <ul class="station-list">
+                  <li>1. Pasir Ris</li>
+                  <li>2. Tampines</li>
+                  <li>3. Simei</li>
+                  <li>4. Tanah Merah</li>
+                  <li>5. Bedok</li>
+                </ul>
+              </div>
+
+              <div class="card route-card">
+                <h3>Route Visual</h3>
+                <div class="route-visual">
+                  ST01 <i class="fa-solid fa-arrow-right"></i> ST02
+                  <i class="fa-solid fa-arrow-right"></i> ST03
+                </div>
+                <button
+                  class="btn btn-white"
+                  style="margin-top: 15px; width: 100%"
+                >
+                  Edit Route
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section id="other-page" class="page-section" style="display: none">
+            <div
+              class="placeholder-content"
+              style="text-align: center; margin-top: 50px; color: #999"
+            >
+              <i
+                class="fa-solid fa-screwdriver-wrench"
+                style="font-size: 50px; margin-bottom: 20px"
+              ></i>
+              <h2>Under Construction</h2>
+              <p>This module is being developed.</p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
